@@ -1,0 +1,46 @@
+[project]
+name = "anpr2"
+version = "0.1.0"
+description = "Automatic Number Plate Recognition with GUI"
+requires-python = ">=3.10"
+dependencies = [
+    "opencv-python>=4.8.0",
+    "ultralytics>=8.3.0",
+    "paddleocr>=3.0.0",
+    "paddlepaddle",
+    "pytesseract>=0.3.10",
+    "numpy>=1.24.0",
+    "pillow>=10.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[project.scripts]
+anpr2 = "app:main"
+parking-analytics = "run_analytics:main"
+parking-monitor = "main:main"
+parking-roi = "draw_roi:main"
+
+[tool.hatch.build.targets.wheel]
+only-include = [
+    "app.py",
+    "backend_client.py",
+    "detector.py",
+    "draw_roi.py",
+    "known_plates.txt",
+    "main.py",
+    "run_analytics.py",
+    "run_headless.py",
+    "video_paths.py",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

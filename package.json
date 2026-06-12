@@ -1,0 +1,15 @@
+{
+  "name": "parking_app",
+  "private": true,
+  "description": "Запуск из родительской папки проксируется в parking-app",
+  "scripts": {
+    "dev": "npm run dev --prefix parking-app",
+    "api": "npm run dev --prefix parking-api",
+    "backend": "cd parking-backend && py -m uvicorn main:app --reload --host 127.0.0.1 --port 8000",
+    "analytics": "parking-analytics\\.venv\\Scripts\\python.exe parking-analytics\\run_analytics.py",
+    "build": "npm run build --prefix parking-app",
+    "preview": "npm run preview --prefix parking-app",
+    "install:app": "npm install --prefix parking-app",
+    "install:api": "npm install --prefix parking-api"
+  }
+}
